@@ -11,7 +11,7 @@ st.write(
 ptname = st.text_input('Enter patient code')
 
 time_to_predict = st.radio(
-    "Time to predict",
+    "Time to predict (Months)",
     [6, 12, 18],
     index=0
 )
