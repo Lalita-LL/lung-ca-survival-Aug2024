@@ -11,14 +11,14 @@ st.write(
 ptname = st.text_input('Enter patient code')
 
 time_to_predict = st.radio(
-    "Time to predict (Months)",
-    [6, 12, 18],
+    "Time to predict",
+    options=["6 months", "12 months", "18 months"],
     index=0
 )
 
 bmi_group = st.radio(
     "BMI group",
-    options=["<18.5", "18.5-22.9", ">23"],
+    options=["Less than 18.5", "18.5-22.9", "More than 23"],
     index=1
 )
 
@@ -30,28 +30,29 @@ bone_metastasis = st.radio(
 
 nlr = st.radio(
     "Neutrophil to lymphocyte ratio",
-    options=["<5", ">=5"],
+    options=["Less than 5", "Equal to or more than 5"],
     index=0
 )
 
 agr = st.radio(
     "Albumin to globulin ratio",
-    options=[">=1", "<1"],
+    options=["Equal to or more than 1", "Less than 1"],
     index=0
 )
 
 mpa_size = st.radio(
     "MPA size",
-    options=["<29 mm", ">=29 mm"],
+    options=["Less than 29 mm", "Equal to or more than 29 mm"],
     index=0
 )
 
 # Mapping input selections to numeric values
-bmi_mapping = {"<18.5": 0.2943594, "18.5-22.9": 0, ">23": -0.6491672}
+time_to_predict_mapping = {"6 months": 6, "12 months": 12, "18 months": 18}
+bmi_mapping = {"Less than 18.5": 0.2943594, "18.5-22.9": 0, "More than 23": -0.6491672}
 bone_mapping = {"Without bone metastasis": 0, "With bone metastasis": 0.7338159}
-nlr_mapping = {"<5": 0, ">=5": 0.8116491}
-agr_mapping = {">=1": 0, "<1": 0.7732527}
-mpa_mapping = {"<29 mm": 0, ">=29 mm": 1.008189}
+nlr_mapping = {"Less than 5": 0, "Equal to or more than 5": 0.8116491}
+agr_mapping = {"Equal to or more than 1": 0, "Less than 1": 0.7732527}
+mpa_mapping = {"Less than 29 mm": 0, "Equal to or more than 29 mm": 1.008189}
 
 # Calculate Linear Predictor (LP)
 LP = (bmi_mapping[bmi_group] +
