@@ -2,7 +2,7 @@ import streamlit as st
 import numpy as np
 
 # Title
-st.title("Survival function in lung cancer patients 🎈")
+st.title("Survival prediction in advanced EGFR mutated NSCLC")
 st.write(
     "This app and model were developed by Faculty of Medicine, Chiang Mai University"
 )
@@ -24,7 +24,7 @@ bmi_group = st.radio(
 
 bone_metastasis = st.radio(
     "Bone metastasis",
-    options=["Without bone metastasis", "With bone metastasis"],
+    options=["Absence", "Presence"],
     index=0
 )
 
@@ -49,7 +49,7 @@ mpa_size = st.radio(
 # Mapping input selections to numeric values
 time_to_predict_mapping = {"6 months": 6, "12 months": 12, "18 months": 18}
 bmi_mapping = {"Less than 18.5": 0.2943594, "18.5-22.9": 0, "More than 23": -0.6491672}
-bone_mapping = {"Without bone metastasis": 0, "With bone metastasis": 0.7338159}
+bone_mapping = {"Absence": 0, "Presence": 0.7338159}
 nlr_mapping = {"Less than 5": 0, "Equal to or more than 5": 0.8116491}
 agr_mapping = {"Equal to or more than 1": 0, "Less than 1": 0.7732527}
 mpa_mapping = {"Less than 29 mm": 0, "Equal to or more than 29 mm": 1.008189}
